@@ -71,6 +71,9 @@ def minicpm():
     response,code=minicpm_api(encoded_image,data,model,tokenizer)
     
     return response,code
+@app.route('/minicpm',methods=['GET'])
+def minicpm_get():
+    return "Please use POST method", 400
     
 
 
