@@ -2,6 +2,7 @@ import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 import base64
+from io import BytesIO
 
 def load_CPM():
     model = AutoModel.from_pretrained("./Model", trust_remote_code=True)  
