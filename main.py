@@ -1,6 +1,6 @@
 from content_checker_GPT.content_checker import gpt_api
-#from content_checker_MiniCPM.content_checker_miniCPM import load_CPM, minicpm_api
-from stamp_checker.stamp_checker import stamp_matching
+from content_checker_MiniCPM.content_checker_miniCPM import load_CPM, minicpm_api
+#from stamp_checker.stamp_checker import stamp_matching
 
 import base64
 from flask import Flask,request
@@ -49,7 +49,7 @@ def gpt():
         t1.join()
         response['stamp']=stamp_result[0]
     return response,code
-
+"""
 @app.route('/minicpm',methods=['POST'])
 def minicpm():
     code =200
@@ -71,7 +71,7 @@ def minicpm():
     response,code=minicpm_api(encoded_image,data,model,tokenizer)
     
     return response,code
-    
+    """
 
 
 
