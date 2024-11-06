@@ -77,8 +77,10 @@ def minicpm():
 
 if __name__=="__main__":
     model, tokenizer = load_CPM()
+    """
     if API_KEY=="":
         with open('configs/api_key.txt','r') as f:
             API_KEY=f.read()
+    """
     from waitress import serve
     serve(app, host="0.0.0.0", port=5000)
