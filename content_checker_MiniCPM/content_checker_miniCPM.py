@@ -9,7 +9,7 @@ def load_CPM():
     return model, tokenizer
 
 def base64_to_image_PIL(base64_image):
-    image_data = base64.b64decode(base64_string)
+    image_data = base64.b64decode(base64_image)
     image_bytes = BytesIO(image_data)
     image = Image.open(image_bytes)
     return image
