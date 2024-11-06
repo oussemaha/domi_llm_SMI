@@ -1,4 +1,4 @@
-from content_checker_GPT.content_checker import gpt_api
+#from content_checker_GPT.content_checker import gpt_api
 from content_checker_MiniCPM.content_checker_miniCPM import load_CPM, minicpm_api
 #from stamp_checker.stamp_checker import stamp_matching
 
@@ -17,7 +17,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 app = Flask(__name__)
-
+"""
 @app.route('/gpt',methods=['POST'])
 def gpt():
     print(request)
@@ -71,7 +71,7 @@ def minicpm():
     response,code=minicpm_api(encoded_image,data,model,tokenizer)
     
     return response,code
-    """
+    
 
 
 
