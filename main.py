@@ -1,5 +1,6 @@
 #from content_checker_GPT.content_checker import gpt_api
 from content_checker_MiniCPM.content_checker_miniCPM import load_CPM, minicpm_api
+import base64
 #from stamp_checker.stamp_checker import stamp_matching
 
 import base64
