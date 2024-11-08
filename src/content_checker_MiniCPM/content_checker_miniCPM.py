@@ -12,13 +12,11 @@ question = """
         """
 class ContentCheckerMiniCPM:
     def __init__(self):
-        self.model, self.tokenizer = None, None
-        self.isInitialized=False
+        self.model, self.tokenizer = self.load_CPM("./Model")
 
     def load_CPM(self,model_path):
         self.model = AutoModel.from_pretrained(f"./{model_path}", trust_remote_code=True)  
         self.tokenizer = AutoTokenizer.from_pretrained(f"./{model_path}", trust_remote_code=True)  
-        self.isInitialized=True
 
     def base64_to_image_PIL(base64_image):
         image_data = base64.b64decode(base64_image)
@@ -27,8 +25,6 @@ class ContentCheckerMiniCPM:
         return image
     
     def process_data(self,imageFile,data,prompt_text=question):
-        if not self.isInitialized:
-            return "Model not loaded", 400
         image = Image.open(imageFile)
         msgs = [{'role': 'user', 'content': [image, question.format(data=data)]}]
         try:
