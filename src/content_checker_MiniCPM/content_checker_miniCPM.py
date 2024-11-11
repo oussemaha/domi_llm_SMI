@@ -12,11 +12,13 @@ question = """
         """
 class ContentCheckerMiniCPM:
     def __init__(self):
-        self.model, self.tokenizer = self.load_CPM("./Model")
+        self.model, self.tokenizer = None, None
+        self.load_CPM("./Model")
 
     def load_CPM(self,model_path):
         self.model = AutoModel.from_pretrained(f"./{model_path}", trust_remote_code=True)  
         self.tokenizer = AutoTokenizer.from_pretrained(f"./{model_path}", trust_remote_code=True)  
+
 
     def base64_to_image_PIL(base64_image):
         image_data = base64.b64decode(base64_image)
