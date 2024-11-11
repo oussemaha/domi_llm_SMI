@@ -20,17 +20,12 @@ class DB_Sqlite3:
 
     def create_table(self, table_name, columns):
         columns = ', '.join(columns)
-        querry = "CREATE TABLE IF NOT EXISTS ? ()"
         self.cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})")
         self.conn.commit()
 
     def insert(self, table_name, columns, values):
-        columns_s = ', '.join(columns)
-        values_s = ', '.join([f"'{value}'" for value in values])
-        querry = f"INSERT INTO ? ({','.join(['?'])*len(columns)}) VALUES ({','.join(['?']*len(values))})"
-        print("colums"+ str(len(columns)) + "values" + str(len(values)))
-        print(querry)
-        self.cursor.execute(querry,table_name,columns,values)
+        querry = f"INSERT INTO {table_name} ({columns_s}) VALUES ({','.join(['?']*len(values))})"
+        self.cursor.execute(querry,values)
         self.conn.commit()
 
     #return a list
@@ -42,7 +37,6 @@ class DB_Sqlite3:
     def select_where(self, table_name, columns, condition):
         columns = ', '.join(columns)
         condition = ' and '.join(condition)
-        print(f"SELECT {columns} FROM {table_name} WHERE {condition}")
         self.cursor.execute(f"SELECT {columns} FROM {table_name} WHERE {condition}")
         return self.cursor.fetchall()
 
