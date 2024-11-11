@@ -4,11 +4,11 @@ from .Db import DB_Sqlite3
 db_api = Blueprint('db_api', __name__)
 db = DB_Sqlite3()
 
-@db_api.route('/select')
+@db_api.route('/', methods=["GET"])
 def select():
     return db.select_Table("routing_tab", ["*"])
 
-@db_api.route("/add",methods=["POST"])
+@db_api.route("/",methods=["POST"])
 def add():
         #to add verifiacation on the question, fi it has the parameter {data} 
         if (db.select_where("routing_tab", ["route"], ["route='"+request.form.get('route')+"'"])==[]):     
