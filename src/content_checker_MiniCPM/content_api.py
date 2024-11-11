@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 import sys
 sys.path.append(".")
-from src.SQLite_DB.Db import DB_Sqlite3
+from src.SQLite_DB.Db_repository import DB_Sqlite3
 from src.content_checker_MiniCPM.content_checker_miniCPM import ContentCheckerMiniCPM
 import json
 
@@ -15,7 +15,8 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-@CPM_api.route('/', methods=['POST'])
+
+@CPM_api.route('/default', methods=['POST'])
 def CPM():
     try:
         data = json.loads(request.form.get('data'))
@@ -35,7 +36,7 @@ def CPM():
     response,code=MiniCpm.process_data(imageFile,data)
 
     return response,code
-"""
+
 @CPM_api.route('/<path:subpath>', methods=['POST'])
 def CPM(subpath):
     questions=db.select_where("routing_tab",["question"],["route='"+subpath+"'"])
@@ -60,4 +61,3 @@ def CPM(subpath):
     response,code=MiniCpm.process_data(imageFile,data,question)
 
     return response,code
-"""

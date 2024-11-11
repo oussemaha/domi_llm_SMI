@@ -6,4 +6,4 @@ pyvenv.cfg
 dist/
 README.md
 pyproject.toml
-src/SQLite_DB/test_database.db.db
+src/SQLite_DB/test_database.db
