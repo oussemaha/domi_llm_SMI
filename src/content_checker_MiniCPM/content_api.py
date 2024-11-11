@@ -26,10 +26,10 @@ def CPM():
         return "No file part", 400
 
     imageFile =request.files['file']
-    if f.filename == '':
+    if imageFile.filename == '':
         return "No selected file", 400
 
-    if not allowed_file(f.filename):
+    if not allowed_file(imageFile.filename):
         return "File type not allowed", 400
     
     response,code=MiniCpm.process_data(imageFile,data)
