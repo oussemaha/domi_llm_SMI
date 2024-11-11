@@ -3,7 +3,7 @@ import sys
 sys.path.append(".")
 from src.SQLite_DB.Db import DB_Sqlite3
 from src.content_checker_MiniCPM.content_checker_miniCPM import ContentCheckerMiniCPM
-
+import json
 
 CPM_api = Blueprint('CPM_api', __name__)
 db= DB_Sqlite3()
