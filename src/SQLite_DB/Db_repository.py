@@ -20,14 +20,16 @@ class DB_Sqlite3:
 
     def create_table(self, table_name, columns):
         columns = ', '.join(columns)
+        querry = "CREATE TABLE IF NOT EXISTS ? ()"
         self.cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})")
         self.conn.commit()
 
     def insert(self, table_name, columns, values):
-        columns = ', '.join(columns)
-        values = ', '.join([f"'{value}'" for value in values])
-        print(f"INSERT INTO {table_name} ({columns}) VALUES ({values})")
-        self.cursor.execute(f"INSERT INTO {table_name} ({columns}) VALUES ({values})")
+        columns_s = ', '.join(columns)
+        values_s = ', '.join([f"'{value}'" for value in values])
+        querry = f"INSERT INTO ? ({','.join(['?'])*len(columns)}) VALUES ({','.join(['?']*len(values))})"
+        print(querry)
+        self.cursor.execute(querry,table_name,columns,values)
         self.conn.commit()
 
     #return a list
