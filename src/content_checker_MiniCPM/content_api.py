@@ -7,7 +7,7 @@ import json
 
 CPM_api = Blueprint('CPM_api', __name__)
 db= DB_Sqlite3()
-model = ContentCheckerMiniCPM()
+MiniCpm = ContentCheckerMiniCPM()
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
