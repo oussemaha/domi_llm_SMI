@@ -16,4 +16,10 @@ def add():
             return "Route added", 200
         else:
             return "Route already exists", 400
-    
+@db_api.route("/<path:subpath>",methods=["DELETE"])
+def delete(subpath):
+    if (db.select_where("routing_tab", ["route"], ["route='"+subpath+"'"])==[]):     
+        return "Route not found", 404
+    else:
+        db.delete("routing_tab", ["route='"+subpath+"'"])
+        return "Route deleted", 200
