@@ -35,6 +35,7 @@ def CPM(subpath):
     response,code=MiniCpm.process_data(imageFile,data)
 
     return response,code
+"""
 @CPM_api.route('/<path:subpath>', methods=['POST'])
 def CPM(subpath):
     questions=db.select_where("routing_tab",["question"],["route='"+subpath+"'"])
@@ -59,3 +60,4 @@ def CPM(subpath):
     response,code=MiniCpm.process_data(imageFile,data,question)
 
     return response,code
+"""
