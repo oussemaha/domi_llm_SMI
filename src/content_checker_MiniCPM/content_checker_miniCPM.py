@@ -33,7 +33,7 @@ class ContentCheckerMiniCPM:
             res = self.model.chat(
                 image=None,
                 msgs=msgs,
-                tokenizer=tokenizer
+                tokenizer=self.tokenizer
                 )      
         except Exception as e:
             print(e)
