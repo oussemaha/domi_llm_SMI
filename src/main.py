@@ -17,11 +17,11 @@ API_KEY=""
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
-Database = DB_Sqlite3()
+#atabase = DB_Sqlite3()
 #MiniCpm=ContentCheckerMiniCPM(miniCPM_model_path)
 
 app = Flask(__name__)
-app.register_blueprint(db_api,url_prefix='/db')
+#app.register_blueprint(db_api,url_prefix='/db')
 app.register_blueprint(CPM_api,url_prefix='/cpm')
 
 
