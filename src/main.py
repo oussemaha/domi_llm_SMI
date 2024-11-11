@@ -13,7 +13,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.register_blueprint(db_api,url_prefix='/db')
-app.register_blueprint(CPM_api,url_prefix='/cpm')
+#app.register_blueprint(CPM_api,url_prefix='/cpm')
 
 
 
