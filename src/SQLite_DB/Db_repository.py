@@ -28,7 +28,7 @@ class DB_Sqlite3:
         columns_s = ', '.join(columns)
         values_s = ', '.join([f"'{value}'" for value in values])
         querry = f"INSERT INTO ? ({','.join(['?'])*len(columns)}) VALUES ({','.join(['?']*len(values))})"
-        print("colums"+ len(columns) + "values" + len(values))
+        print("colums"+ str(len(columns)) + "values" + str(len(values)))
         print(querry)
         self.cursor.execute(querry,table_name,columns,values)
         self.conn.commit()
