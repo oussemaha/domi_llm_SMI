@@ -47,6 +47,10 @@ class DB_Sqlite3:
         columns = ', '.join([f"{column} = '{value}'" for column, value in zip(columns, values)])
         self.cursor.execute(f"UPDATE {table_name} SET {columns} WHERE {condition}")
         self.conn.commit()
+    def delete(self, table_name, condition):
+        condition = ' and '.join(condition)
+        self.cursor.execute(f"DELETE FROM {table_name} WHERE {condition}")
+        self.conn.commit()
         
     def close(self):
         self.conn.close()
