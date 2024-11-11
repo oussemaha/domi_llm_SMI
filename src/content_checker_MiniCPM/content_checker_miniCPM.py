@@ -36,5 +36,5 @@ class ContentCheckerMiniCPM:
                 tokenizer=tokenizer
                 )      
         except Exception as e:
-            return "Error in processing data with CPM", 400
+            return "Error in processing data with CPM error" + e, 400
         return res,200
