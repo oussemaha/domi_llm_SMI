@@ -24,6 +24,7 @@ class DB_Sqlite3:
         self.conn.commit()
 
     def insert(self, table_name, columns, values):
+        columns_s = ', '.join(columns)
         querry = f"INSERT INTO {table_name} ({columns_s}) VALUES ({','.join(['?']*len(values))})"
         self.cursor.execute(querry,values)
         self.conn.commit()
