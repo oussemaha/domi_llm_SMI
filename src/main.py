@@ -17,7 +17,6 @@ API_KEY=""
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
-#atabase = DB_Sqlite3()
 #MiniCpm=ContentCheckerMiniCPM(miniCPM_model_path)
 
 app = Flask(__name__)
@@ -31,17 +30,13 @@ app.register_blueprint(CPM_api,url_prefix='/cpm')
 def test():
     return "Server is running",200
 
-#DB test
-@app.route('/db_test')
-def db_test():
-    return str(Database.select_Table("routing_tab",["route","question"])),200
 
 
 
 if __name__=="__main__":
 
     #MiniCpm.load_CPM(miniCPM_model_path)
-    Database.create_table("routing_tab",["route unique","question"])
+    #Database.create_table("routing_tab",["route unique","question"])
 
     app.run(host='0.0.0.0',port=5000)
 
