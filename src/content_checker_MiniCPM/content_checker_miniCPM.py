@@ -35,6 +35,7 @@ class ContentCheckerMiniCPM:
                 msgs=msgs,
                 tokenizer=self.tokenizer
                 )      
+            print (res)
         except Exception as e:
             print(e)
             return "Error in processing data with CPM error" , 400
